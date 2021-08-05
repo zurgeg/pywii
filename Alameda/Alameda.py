@@ -1715,7 +1715,7 @@ class Alameda(object):
 			self.MD5 = Struct.uint8[0x10]
 	
 	def __init__(self, fn, type='icon'):
-		renderer = Renderer()
+		#renderer = Renderer()
 		
 		fp = open(fn, 'rb')
 		
@@ -1736,36 +1736,39 @@ class Alameda(object):
 		root = U8(fp.read())
 		if type == 'icon':
 			banner = U8(IMD5(root.Files['./meta/icon.bin']))
-			renderer.Brlyt = Brlyt(banner, banner.Files['./arc/blyt/icon.brlyt'], renderer)
+			#renderer.Brlyt = Brlyt(banner, banner.Files['./arc/blyt/icon.brlyt'], renderer)
 			fd = None
 			try:
 				fd = banner.Files['./arc/anim/icon.brlan']
 			except:
 				pass
 			if fd is not None:
-				renderer.Brlan = Brlan(fd)
+				#renderer.Brlan = Brlan(fd)
+				pass
 
 			loop = True
 		else:
 			banner = U8(IMD5(root.Files['./meta/banner.bin']))
-			renderer.Brlyt = Brlyt(banner, banner.Files['./arc/blyt/banner.brlyt'], renderer)
+			#renderer.Brlyt = Brlyt(banner, banner.Files['./arc/blyt/banner.brlyt'], renderer)
 			loop = './arc/anim/banner_start.brlan' not in banner.Files
 			loop_anim = None
 
 			if not loop:
-				renderer.Brlan = Brlan(banner.Files['./arc/anim/banner_start.brlan'])
+				#renderer.Brlan = Brlan(banner.Files['./arc/anim/banner_start.brlan'])
 				if './arc/anim/banner_loop.brlan' in banner.Files:
 					loop_anim = Brlan(banner.Files['./arc/anim/banner_loop.brlan'])
 			else:
-				renderer.Brlan = Brlan(banner.Files['./arc/anim/banner.brlan'])
+				#renderer.Brlan = Brlan(banner.Files['./arc/anim/banner.brlan'])
 				if './arc/anim/banner.brlan' in banner.Files:
-					renderer.Brlan = Brlan(banner.Files['./arc/anim/banner.brlan'])
+					#renderer.Brlan = Brlan(banner.Files['./arc/anim/banner.brlan'])
+					pass
 				else:
-					renderer.Brlan = None
+					#renderer.Brlan = None
+					pass
 				
-		if renderer.MainLoop(loop) and type == 'banner' and not loop:
-			renderer.Brlan = loop_anim
-			renderer.MainLoop(True)
+		#if renderer.MainLoop(loop) and type == 'banner' and not loop:
+		#	renderer.Brlan = loop_anim
+		#	renderer.MainLoop(True)
 
 if __name__=='__main__':
 	Alameda(*sys.argv[1:])
