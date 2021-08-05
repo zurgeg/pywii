@@ -11,7 +11,7 @@ except:
 import sys, os
 from pywii.Common.Struct import Struct
 import struct
-import pywii as wii
+import pywii.Common.pywii as wii
 
 def LZ77Decompress(data):
 	inp = 0
