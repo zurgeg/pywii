@@ -75,7 +75,7 @@ class U8(object):
 		u8.unpack(data[pos:pos+len(u8)])
 		pos += len(u8)
 		
-		print(hex(u8.Tag))
+		#print(hex(u8.Tag))
 		assert u8.Tag == 0x55aa382d
 		pos += u8.RootNode - 0x20
 		
@@ -227,7 +227,7 @@ class TPL(object):
 			rgba = b'\0\0\0\0' * texHeader.Size[0] * texHeader.Size[1]
 		
 		image = ImageData(texHeader.Size[1], texHeader.Size[0], 'RGBA', rgba)
-		print(format)
+		#print(format)
 		return image
 	
 	def I4(self, data, xxx_todo_changeme):
@@ -677,7 +677,7 @@ class Brlyt(object):
 		
 		def unpack_item(self, i, data):
 			fn = data.split(b'\0', 1)[0].decode("ascii")
-			print(fn)
+			#print(fn)
 			tex = TPL(self.Archive.Files['./arc/timg/' + fn.lower()]).Textures[0]
 			self.Items.append(Brlyt.BrlytTexture(fn, tex))
 		def pack_item(self, i, item):
@@ -1729,8 +1729,8 @@ class Alameda(object):
 			fp.seek(0x40)
 			imet.unpack(fp.read(len(imet)))
 			assert imet.IMET == 'IMET'
-		
-		print('English title: %s' % imet.Names[1])
+		self.imet = imet
+		#print('English title: %s' % imet.Names[1])
 		
 		
 		root = U8(fp.read())
