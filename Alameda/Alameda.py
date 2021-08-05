@@ -9,7 +9,7 @@ except:
 	pass
 
 import sys, os
-from pywii.Common import Struct
+from pywii.Common.Struct import Struct
 import struct
 import pywii as wii
 
