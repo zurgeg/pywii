@@ -9,8 +9,7 @@ except:
 	pass
 
 import sys, os
-sys.path.append(os.path.realpath(os.path.dirname(sys.argv[0]))+"/../Common")
-from Struct import Struct
+from pywii.Common import Struct
 import struct
 import pywii as wii
 
