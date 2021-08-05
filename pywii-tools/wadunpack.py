@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import sys, os, os.path
-import pywii as wii
+import pywii.Common.pywii as wii
 
 args = sys.argv[1:]
 

@@ -1,2 +1,1 @@
-import Alameda
-import Common
+from . import *
