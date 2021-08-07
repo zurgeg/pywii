@@ -484,7 +484,7 @@ class WiiTik(WiiSigned):
             elif self.common_key_index == 1:
                 key = keys["korean-key"]
             else:
-                print("WARNING: OLD FAKESIGNED TICKET WITH BAD KEY OFFSET, ASSUMING NORMAL COMMON KEY")
+                # print("WARNING: OLD FAKESIGNED TICKET WITH BAD KEY OFFSET, ASSUMING NORMAL COMMON KEY")
                 key = keys["common-key"]
             aes = AES.new(key, AES.MODE_CBC, self.title_key_iv)
             self.title_key = aes.decrypt(self.title_key_enc)
